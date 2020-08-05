@@ -11,5 +11,6 @@ class Student
     @album = album
   end 
 
+  
 
 end
