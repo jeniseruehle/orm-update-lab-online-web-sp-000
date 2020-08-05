@@ -48,7 +48,7 @@ class Student
   end 
   
   def self.new_from_db(array)
-    new_student = self.new
+    new_student = Student.new
     new_student.id = array[0]
     new_student.name = array[1]
     new_student.grade = array[2]
@@ -56,6 +56,9 @@ class Student
   end
   
   def find_by_name(name)
+    sql = "SELECT * FROM students WHERE name = ?"
+    result = DB[:conn].execute(sql, name)[0]
+    Student.new(result[0], result[1], result[2])
     
   end 
 
